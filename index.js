@@ -1,8 +1,8 @@
-// Import express and ejs
 var express = require ('express')
 var ejs = require('ejs')
 
 //Import mysql module
+// added comment
 var mysql = require('mysql2')
 
 
@@ -22,9 +22,9 @@ app.use(express.static(__dirname + '/public'))
 // Define the database connection
 const db = mysql.createConnection ({
     host: 'localhost',
-    user: 'appuser',
-    password: 'app2027',
-    database: 'myBookshop'
+    user: 'bettys_books_app',
+    password: 'qwertyuiop',
+    database: 'bettys_books'
 })
 // Connect to the database
 db.connect((err) => {
@@ -36,7 +36,7 @@ db.connect((err) => {
 global.db = db
 
 // Define our application-specific data
-app.locals.shopData = {shopName: "Betty'..s Books"}
+app.locals.shopData = {shopName: "Bettys Books"}
 
 // Load the route handlers
 const mainRoutes = require("./routes/main")
