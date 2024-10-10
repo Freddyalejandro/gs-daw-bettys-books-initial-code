@@ -9,7 +9,8 @@
     <h2>Here are the books that we sell:</h2>
     <ul>
       <% availableBooks.forEach(function(book) { %>
-        <li><%= book.name %>, £<%=book.price%> </li>
+        <li><%= book.name %>, £<%=book.price%> - <%=book.author%> - <%=book.publisher%> - <%=book.publication_date%> 
+         </li>
       <% }) %>
     </ul>
     </body>
