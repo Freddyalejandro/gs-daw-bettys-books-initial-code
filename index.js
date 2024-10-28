@@ -1,23 +1,32 @@
 var express = require ('express')
 var ejs = require('ejs')
-
+var session = require('express-session');
 //Import mysql module
 // added comment
-var mysql = require('mysql')
+var mysql = require('mysql2')
 
 
 // Create the express application object
 const app = express()
 const port = 8000
 
+
+
 // Tell Express that we want to use EJS as the templating engine
 app.set('view engine', 'ejs')
+
 
 // Set up the body parser 
 app.use(express.urlencoded({ extended: true }))
 
 // Set up public folder (for css and statis js)
 app.use(express.static(__dirname + '/public'))
+
+app.use(session({
+    secret: 'hrh242567ijtrq',
+    resave: false,
+    saveUninitialized: true
+}))
 
 // Define the database connection
 const db = mysql.createConnection ({
@@ -33,23 +42,26 @@ db.connect((err) => {
     }
     console.log('Connected to database')
 })
-global.db = db
+global.db = db;
 
 // Define our application-specific data
 app.locals.shopData = {shopName: "Bettyss Books",
 }
-
+app.engine('html', ejs.renderFile);
 // Load the route handlers
-const mainRoutes = require("./routes/main")
+const mainRoutes = require("./routes/main")(db, app);
 app.use('/', mainRoutes)
 
 // Load the route handlers for /users
-const usersRoutes = require('./routes/users')
+const usersRoutes = require('./routes/users')(db, app);
 app.use('/users', usersRoutes)
 
 // Load the route handlers for /books
-const booksRoutes = require('./routes/books')
+const booksRoutes = require('./routes/books')(db, app);
 app.use('/books', booksRoutes)
+
+const profileRoutes = require('./routes/profile')(db, app);
+app.use('/profile', profileRoutes)
 
 // Start the web app listening
 app.listen(port, () => console.log(`Node app listening on port ${port}!`))
