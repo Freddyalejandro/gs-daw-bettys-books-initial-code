@@ -28,7 +28,7 @@ module.exports = function(db, app) {
                 if (isMatch) {
                     req.session.loggedInUser = result[0];
                     console.log(`User logged in: ${username}`); // Mensaje en consola
-                    res.redirect('/profile/profile');
+                    res.redirect('./profile');
                 } else {
                     res.send('Invalid username or password');
                 }
