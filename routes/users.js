@@ -32,6 +32,7 @@ module.exports = function(db, app) {
         })
         })                                                                         
     })
+    
     router.get('/list', function(req, res, next) {
         let sqlquery = "SELECT first_name, last_name, username, email FROM users";
         
@@ -42,7 +43,9 @@ module.exports = function(db, app) {
             res.render('userlist.ejs', { users: results})
         });
     })
+
     
+
 
   return router;
 }

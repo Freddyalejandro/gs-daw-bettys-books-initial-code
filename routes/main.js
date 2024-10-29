@@ -8,6 +8,7 @@ module.exports = function(db, app) {
     res.render('index.ejs')
     })
 
+    
     router.get('/about',function(req, res, next){
     res.render('about.ejs')
     })

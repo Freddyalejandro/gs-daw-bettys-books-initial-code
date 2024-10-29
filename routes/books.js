@@ -3,6 +3,14 @@ const router = express.Router()
 
 module.exports = function(db, app) {
 
+    const redirectLogin = (req, res, next) => {
+        if (!req.session.userId ) {
+          res.redirect('/profile/Login') // redirect to the login page
+        } else { 
+            next (); // move to the next middleware function
+        } 
+    }
+
     router.get('/search',function(req, res, next){
         res.render("search.ejs")
     })
@@ -20,7 +28,7 @@ module.exports = function(db, app) {
     })
 
 
-    router.get('/list', function(req, res, next) {
+    router.get('/list',redirectLogin, function(req, res, next) {
         let sqlquery = "SELECT * FROM books" // query database to get all the books
         // execute sql query
         db.query(sqlquery, (err, result) => {
@@ -31,7 +39,7 @@ module.exports = function(db, app) {
         })
     })
 
-    router.get('/addbook', function (req, res, next) {
+    router.get('/addbook',redirectLogin, function (req, res, next) {
         res.render('addbook.ejs')
     })
 

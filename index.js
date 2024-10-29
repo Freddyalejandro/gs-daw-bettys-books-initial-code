@@ -23,10 +23,14 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/public'))
 
 app.use(session({
-    secret: 'hrh242567ijtrq',
+    secret: 'somerandomstuff',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false,
+    cookie: {
+        expires: 600000
+    }
 }))
+
 
 // Define the database connection
 const db = mysql.createConnection ({
