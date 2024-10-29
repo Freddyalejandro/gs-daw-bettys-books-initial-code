@@ -5,7 +5,7 @@ module.exports = function(db, app) {
 
     const redirectLogin = (req, res, next) => {
         if (!req.session.userId ) {
-          res.redirect('/profile/Login') // redirect to the login page
+          res.redirect('../profile/Login') // redirect to the login page
         } else { 
             next (); // move to the next middleware function
         } 
