@@ -41,3 +41,36 @@ a:link {
     text-decoration: none;
     padding:5px;
   }
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff3cd; /* Fondo amarillo claro */
+  border: 1px solid #ffeeba; /* Borde amarillo */
+  color: #856404; /* Texto marrón oscuro */
+  padding: 10px 15px;
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 1rem;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.alert strong {
+  font-weight: bold;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #856404; /* Color de la 'X' similar al texto */
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  color: #6c4c01; /* Un tono más oscuro en hover */
+}
+
+.btn-close:hover {
+  color: #6c4c01; /* Un tono más oscuro en hover */
+}
