@@ -6,7 +6,6 @@ const { check, validationResult } = require('express-validator')
 const saltRounds = 10
 
 module.exports = function(db, app) {
-
     router.get('/register', function (req, res, next) {
         res.render('register.ejs')                                                               
     })    
@@ -58,7 +57,6 @@ module.exports = function(db, app) {
             });
         }
     });
-
     router.get('/list', function(req, res, next) {
         let sqlquery = "SELECT first_name, last_name, username, email FROM users";
         
@@ -72,5 +70,4 @@ module.exports = function(db, app) {
 
     return router;
 }
-
 // Export the router object so index.js can access it
