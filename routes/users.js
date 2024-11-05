@@ -10,7 +10,6 @@ module.exports = function(db, app) {
     router.get('/register', function (req, res, next) {
         res.render('register.ejs')                                                               
     })    
-
     router.post('/registered', [
         check('first', "ingrese un nombre")
             .exists()
