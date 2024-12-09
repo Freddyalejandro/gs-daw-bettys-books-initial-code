@@ -4,6 +4,7 @@ const router = express.Router()
 const bcrypt = require('bcrypt')
 const { check, validationResult } = require('express-validator')
 const saltRounds = 10
+const request = require('request')
 
 module.exports = function(db, app) {
     router.get('/register', function (req, res, next) {
@@ -67,7 +68,6 @@ module.exports = function(db, app) {
             res.render('userlist.ejs', { users: results });
         });
     });
-
     return router;
 }
 // Export the router object so index.js can access it
